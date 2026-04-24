@@ -1720,3 +1720,305 @@ to  {
   }
 
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   CANVAS HERO FIX
+   ═══════════════════════════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+#starCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  display: block;
+}
+
+.hero > *:not(#starCanvas) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NAV LOGO AS LINK
+   ═══════════════════════════════════════════════════════════ */
+
+a.nav-logo {
+  text-decoration: none;
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HAMBURGER BUTTON
+   ═══════════════════════════════════════════════════════════ */
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  order: 3;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--cream);
+  transition: all 0.3s;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE SIDEBAR
+   ═══════════════════════════════════════════════════════════ */
+
+.nav-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(280px, 80vw);
+  height: 100vh;
+  background: #0D0C0A;
+  border-left: 0.5px solid var(--border);
+  z-index: 1000;
+  padding: 2rem 1.5rem;
+  transition: right 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-sidebar.open {
+  right: 0;
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.nav-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.sidebar-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 18px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 2rem;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.sidebar-close:hover {
+  color: var(--cream);
+}
+
+.sidebar-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sidebar-link {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 1.2rem 0;
+  border-bottom: 0.5px solid var(--border);
+  transition: color 0.2s;
+}
+
+.sidebar-link:last-child {
+  border-bottom: none;
+}
+
+.sidebar-link:hover,
+.sidebar-link:active {
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TAP VS HOVER HINT
+   ═══════════════════════════════════════════════════════════ */
+
+.hint-touch {
+  display: none;
+}
+
+.hint-hover {
+  display: inline;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CARD OVERFLOW FIX
+   ═══════════════════════════════════════════════════════════ */
+
+.card-face {
+  overflow: hidden;
+}
+
+.card-stats-list {
+  overflow: hidden;
+}
+
+.card-stats-list li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat-key {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.stat-val,
+.stat-placeholder {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE OVERRIDES (ADDITIONS)
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* Show hamburger, hide desktop nav links */
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  /* Hero name — truly fluid on all phone sizes */
+  .hero-name {
+    font-size: min(18vw, 5rem);
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+  }
+
+  /* Touch hint */
+  .hint-touch {
+    display: inline;
+  }
+
+  .hint-hover {
+    display: none;
+  }
+
+  /* Platform cards — single col, auto height */
+  .platforms-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card-3d-wrap {
+    grid-column: 1 !important;
+  }
+
+  /* Card heights — auto on mobile */
+  .card-3d {
+    height: auto !important;
+    min-height: 180px;
+  }
+
+  .card-face {
+    position: relative;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 1.2rem;
+  }
+
+  /* On mobile — tap toggles, no 3D flip needed */
+  .card-3d {
+    transform-style: flat !important;
+  }
+
+  .card-back {
+    transform: none !important;
+    position: relative !important;
+    display: none;
+  }
+
+  .card-3d.flipped .card-front {
+    display: none;
+  }
+
+  .card-3d.flipped .card-back {
+    display: flex;
+  }
+
+  .card-metrics-row {
+    flex-direction: row;
+    gap: 0;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .card-metric-divider {
+    display: none;
+  }
+
+  .card-metric-big {
+    font-size: 1.8rem;
+  }
+
+  .card-back--two-col {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  /* Audience grid — 2 col on mobile instead of 1 */
+  .audience-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .audience-cell {
+    border-right: 0.5px solid var(--border) !important;
+  }
+
+  .audience-cell:nth-child(2n) {
+    border-right: none !important;
+  }
+
+}
+
+@media (max-width: 380px) {
+
+  .hero-name {
+    font-size: 15vw;
+  }
+
+  .card-metric-big {
+    font-size: 1.5rem;
+  }
+
+}
