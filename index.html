@@ -15,14 +15,18 @@
     rel="stylesheet"
   >
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✦</text></svg>">
 </head>
 
 <body>
 
   <!-- NAV  -->
   <nav>
-    <div class="nav-logo">Kwamboxx</div>
-    <ul class="nav-links">
+    <a href="#" class="nav-logo">Kwamboxx</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#platforms">Platforms</a></li>
       <li><a href="#audience">Audience</a></li>
@@ -37,7 +41,7 @@
   <!-- HERO  -->
   <div class="hero">
 
-    <canvas id="starCanvas"></canvas>
+    <canvas id="starCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;display:block;"></canvas>
 
     <p class="hero-eyebrow">Media Kit · 2026 · Nairobi, Kenya</p>
 
@@ -245,7 +249,7 @@
                   <div class="card-metric-label">Accounts Reached</div>
                 </div>
               </div>
-              <div class="card-flip-hint">Hover for full breakdown →</div>
+              <div class="card-flip-hint"><span class="hint-hover">Hover</span><span class="hint-touch">Tap</span> for full breakdown →</div>
             </div>
 
             <div class="card-face card-back card-back--two-col">
@@ -313,7 +317,7 @@
                 <div class="card-metric-big">78.5%</div>
                 <div class="card-metric-label">Kenya-based audience</div>
               </div>
-              <div class="card-flip-hint">Hover for breakdown →</div>
+              <div class="card-flip-hint"><span class="hint-hover">Hover</span><span class="hint-touch">Tap</span> for breakdown →</div>
             </div>
 
             <div class="card-face card-back">
@@ -362,7 +366,7 @@
                 <div class="card-metric-big">18–30</div>
                 <div class="card-metric-label">Core demographic · Urban Kenya</div>
               </div>
-              <div class="card-flip-hint">Hover for full profile →</div>
+              <div class="card-flip-hint"><span class="hint-hover">Hover</span><span class="hint-touch">Tap</span> for full profile →</div>
             </div>
 
             <div class="card-face card-back">
@@ -684,6 +688,19 @@
     </div>
   </footer>
 
+
+  <!-- Mobile nav sidebar -->
+  <div class="nav-sidebar" id="navSidebar">
+    <button class="sidebar-close" id="sidebarClose">✕</button>
+    <ul class="sidebar-links">
+      <li><a href="#about" class="sidebar-link">About</a></li>
+      <li><a href="#platforms" class="sidebar-link">Platforms</a></li>
+      <li><a href="#audience" class="sidebar-link">Audience</a></li>
+      <li><a href="#partnership" class="sidebar-link">Partnership</a></li>
+      <li><a href="#contact" class="sidebar-link">Work Together</a></li>
+    </ul>
+  </div>
+  <div class="nav-overlay" id="navOverlay"></div>
 
   <script src="js/main.js"></script>
 
