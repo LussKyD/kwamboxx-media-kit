@@ -2022,3 +2022,160 @@ a.nav-logo {
   }
 
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   TARGETED FIXES — ROUND 3
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Hero name — truly contained on all screens ─────────── */
+.hero-name {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  font-size: clamp(2.8rem, 12vw, 13rem);
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+/* ── Nav links — Outfit font, no uppercase rendering bugs ── */
+.nav-links a {
+  font-family: 'Outfit', sans-serif;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-size: 13px;
+}
+
+/* ── Card back — fix mirror on mobile ───────────────────── */
+
+/* Desktop 3D flip — back face needs rotateY(180deg) */
+@media (min-width: 769px) {
+  .card-3d {
+    transform-style: preserve-3d;
+  }
+
+  .card-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    position: absolute;
+    inset: 0;
+  }
+
+  .card-3d.flipped {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Mobile — flat toggle, NO 3D transform, NO mirroring */
+@media (max-width: 768px) {
+
+  .card-3d {
+    transform-style: flat !important;
+    transform: none !important;
+    transition: none !important;
+    height: auto !important;
+    position: relative;
+  }
+
+  .card-face {
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+    position: relative !important;
+    transform: none !important;
+    inset: auto !important;
+  }
+
+  .card-front {
+    display: flex;
+  }
+
+  .card-back {
+    display: none;
+    transform: none !important;
+  }
+
+  .card-3d.flipped .card-front {
+    display: none;
+  }
+
+  .card-3d.flipped .card-back {
+    display: flex;
+    transform: none !important;
+  }
+
+  /* Hero name — scale to viewport width */
+  .hero-name {
+    font-size: clamp(2.4rem, 14vw, 4.5rem);
+    letter-spacing: -0.03em;
+  }
+
+  /* Platforms grid — single column, full width */
+  .platforms-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  .card-3d-wrap {
+    grid-column: 1 !important;
+    width: 100%;
+  }
+
+  /* Banner card metrics — row layout, compact */
+  .card-metrics-row {
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+
+  .card-metric-big {
+    font-size: 1.6rem;
+  }
+
+  .card-metric-label {
+    font-size: 9px;
+  }
+
+  .card-metric-divider {
+    display: none;
+  }
+
+  /* Two-col card back — stack on mobile */
+  .card-back--two-col {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Stat list items — prevent overflow */
+  .card-stats-list li {
+    font-size: 11px;
+    padding: 0.4rem 0;
+  }
+
+  .stat-key {
+    max-width: 55%;
+  }
+}
+
+/* ── Very small phones ───────────────────────────────────── */
+@media (max-width: 390px) {
+
+  .hero-name {
+    font-size: 13vw;
+  }
+
+  .hero-stat-num {
+    font-size: 1.8rem;
+  }
+
+  .nav-cta {
+    font-size: 10px;
+    padding: 0.45rem 0.8rem;
+  }
+
+}
