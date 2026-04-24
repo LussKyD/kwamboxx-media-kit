@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/27046362/README.md)
+[README.md](https://github.com/user-attachments/files/27048181/README.md)
 # Kwamboxx Media Kit
 
 Official media kit website for **Kwamboxx** — Nairobi-based content creator, model, and entrepreneur.
@@ -9,7 +9,7 @@ Built by **DRACO iNC** — A DRACO DYNASTY Technology Department.
 
 ## Live Site
 
-> [https://kwamboxx.github.io/media-kit](https://kwamboxx.github.io/media-kit)
+> [https://lusskyd.github.io/kwamboxx-media-kit/](https://lusskyd.github.io/kwamboxx-media-kit/)
 
 ---
 
@@ -28,7 +28,6 @@ kwamboxx-media-kit/
 └── LICENSE
 ```
 
----
 
 
 ## Tech Stack
