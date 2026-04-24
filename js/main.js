@@ -3,12 +3,7 @@ function scrollTo(selector) {
   document.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
 }
 
-// Reliable card flip — triggered on the wrapper, not the transforming child
-document.querySelectorAll('.card-3d-wrap').forEach(wrap => {
-  const card = wrap.querySelector('.card-3d');
-  wrap.addEventListener('mouseenter', () => card.classList.add('flipped'));
-  wrap.addEventListener('mouseleave', () => card.classList.remove('flipped'));
-});
+// Card flip handled below (touch-aware)
 
 // ── STARFIELD + COMETS ──────────────────────────────────────
 const canvas = document.getElementById('starCanvas');
@@ -135,3 +130,68 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 reveals.forEach(el => observer.observe(el));
+
+
+// ── SIDEBAR TOGGLE ───────────────────────────────────────────
+const hamburger = document.getElementById('navHamburger');
+const sidebar   = document.getElementById('navSidebar');
+const overlay   = document.getElementById('navOverlay');
+const closeBtn  = document.getElementById('sidebarClose');
+
+function openSidebar() {
+  sidebar.classList.add('open');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (hamburger) hamburger.addEventListener('click', openSidebar);
+if (closeBtn)  closeBtn.addEventListener('click', closeSidebar);
+if (overlay)   overlay.addEventListener('click', closeSidebar);
+
+// Close sidebar when a link is tapped
+document.querySelectorAll('.sidebar-link').forEach(link => {
+  link.addEventListener('click', closeSidebar);
+});
+
+// ── TOUCH CARD FLIP ──────────────────────────────────────────
+// On touch devices, tap flips card instead of hover
+const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+if (isTouch) {
+  document.querySelectorAll('.card-3d-wrap').forEach(wrap => {
+    const card = wrap.querySelector('.card-3d');
+    wrap.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+} else {
+  // Desktop — mouseenter/leave
+  document.querySelectorAll('.card-3d-wrap').forEach(wrap => {
+    const card = wrap.querySelector('.card-3d');
+    wrap.addEventListener('mouseenter', () => card.classList.add('flipped'));
+    wrap.addEventListener('mouseleave', () => card.classList.remove('flipped'));
+  });
+}
+
+// ── CANVAS RESIZE ────────────────────────────────────────────
+// Ensure canvas always fills its parent hero div
+function resizeCanvas() {
+  const hero = document.querySelector('.hero');
+  if (!canvas || !hero) return;
+  canvas.width  = hero.offsetWidth;
+  canvas.height = hero.offsetHeight;
+}
+// Override the earlier resizeCanvas and re-init
+window.removeEventListener('resize', resizeCanvas);
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  initStars();
+});
+resizeCanvas();
+initStars();
