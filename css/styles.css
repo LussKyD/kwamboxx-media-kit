@@ -1397,3 +1397,326 @@ to  {
   background: var(--gold-light);
   border-color: var(--gold-light);
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE & TABLET
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Tablet (max 1024px) ─────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  nav {
+    padding: 1rem 1.5rem;
+  }
+
+  .about-wrap {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 5rem 1.5rem;
+  }
+
+  .about-left {
+    position: static;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  section {
+    padding: 5rem 1.5rem;
+  }
+
+  .platforms-inner {
+    padding: 0 1.5rem;
+  }
+
+  .platforms-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rates-wrap {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proof-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proof-card:nth-child(3n) {
+    border-right: 0.5px solid var(--border);
+  }
+
+  .proof-card:nth-child(2n) {
+    border-right: none;
+  }
+
+}
+
+/* ── Mobile (max 768px) ──────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav {
+    padding: 1rem 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-cta {
+    padding: 0.5rem 1rem;
+    font-size: 11px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 100px 1.2rem 3rem;
+  }
+
+  .hero-name {
+    font-size: clamp(3.5rem, 18vw, 6rem);
+    line-height: 1;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .hero-divider {
+    width: 40px;
+    height: 1px;
+  }
+
+  .hero-stat-num {
+    font-size: 2.2rem;
+  }
+
+  /* ABOUT */
+  .about-wrap {
+    padding: 4rem 1.2rem;
+  }
+
+  .about-bio {
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+  }
+
+  .pillars-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* PLATFORMS */
+  .platforms-section {
+    padding: 4rem 0;
+  }
+
+  .platforms-inner {
+    padding: 0 1.2rem;
+  }
+
+  .platforms-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .platforms-note {
+    text-align: left;
+  }
+
+  .platforms-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  /* Banner card — stack vertically on mobile */
+  .card-3d-wrap[style*="grid-column"] {
+    grid-column: 1 !important;
+  }
+
+  .card-3d[style*="height: 220px"] {
+    height: auto !important;
+    min-height: 200px;
+  }
+
+  .card-front--row {
+    padding: 1.5rem;
+  }
+
+  .card-metrics-row {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+  }
+
+  .card-metric-divider {
+    width: 40px;
+    height: 1px;
+  }
+
+  .card-back--two-col {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card-3d[style*="height: 300px"] {
+    height: 260px !important;
+  }
+
+  .card-face {
+    padding: 1.5rem;
+  }
+
+  .card-metric-big {
+    font-size: 2.4rem;
+  }
+
+  /* WHY ME */
+  .why-me-section section {
+    padding: 0 1.2rem;
+  }
+
+  .why-row {
+    gap: 1.5rem;
+  }
+
+  .why-heading {
+    font-size: 1.5rem;
+  }
+
+  /* AUDIENCE */
+  section {
+    padding: 4rem 1.2rem;
+  }
+
+  .audience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .audience-cell:nth-child(2n) {
+    border-right: 0.5px solid var(--border);
+  }
+
+  .audience-cell {
+    border-right: none !important;
+  }
+
+  .audience-pct {
+    font-size: 2.5rem;
+  }
+
+  /* PHOTO DUO */
+  .photo-duo {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-duo-item img {
+    height: 300px;
+  }
+
+  /* PARTNERSHIP */
+  .partnership-section section {
+    padding: 4rem 1.2rem;
+  }
+
+  .rates-wrap {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* SOCIAL PROOF */
+  .proof-section section {
+    padding: 4rem 1.2rem;
+  }
+
+  .proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-card {
+    border-right: none !important;
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    padding: 0 1.2rem;
+  }
+
+  .contact-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .contact-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-link {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+    padding: 1.5rem 1.2rem;
+  }
+
+  /* STRIP */
+  .strip-track {
+    gap: 2rem;
+  }
+
+}
+
+/* ── Small mobile (max 480px) ────────────────────────────── */
+@media (max-width: 480px) {
+
+  .hero-name {
+    font-size: clamp(3rem, 20vw, 5rem);
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 10vw, 3rem);
+  }
+
+  .hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+  }
+
+  .hero-tagline {
+    font-size: 12px;
+  }
+
+  .about-bio {
+    font-size: 1rem;
+  }
+
+  .card-metric-big {
+    font-size: 2rem;
+  }
+
+  .why-heading {
+    font-size: 1.3rem;
+  }
+
+  .audience-pct {
+    font-size: 2.2rem;
+  }
+
+  .contact-title {
+    font-size: clamp(2rem, 12vw, 3.5rem);
+  }
+
+}
